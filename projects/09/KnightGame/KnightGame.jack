@@ -1,0 +1,129 @@
+/** A class of KnightGame, inits a game to play */
+class KnightGame {
+    field Board board;
+    field Knight knight;
+    field int x, y, x0, y0, direction;
+
+    constructor KnightGame new(int oX, int oY, int X0, int Y0) {
+        do Screen.clearScreen();
+        let x = X0; let y = Y0;
+        let x0 = X0; let y0 = Y0;
+        let board = Board.new(oX, oY, X0, Y0);
+        let knight = Knight.new(oX, oY, X0, Y0);
+        return this;
+    }
+
+    // makes a single move
+    method bool moveKnight() {
+        var bool iswall, ismove;
+        let iswall = board.isWall(x,y);
+        if (direction = 1) { 
+            if(knight.moveUp(iswall)) {
+                let y=y-1;
+            }
+        }
+        if (direction = 2) { 
+            if(knight.moveDown(iswall)) {
+                let y=y+1;
+            }
+        }
+        if (direction = 3) { 
+            if(knight.moveLeft(iswall)) {
+                let x=x-1;
+            }
+        }
+        if (direction = 4) { 
+            if(knight.moveRight(iswall)) {
+                let x=x+1;
+            }
+        }
+        if (direction = 5) {
+            let ismove = knight.isMove(x0,y0,x,y);
+            if((iswall = true) | (ismove = false)) {
+                do Output.println();
+                do knight.undoMove(x0, y0, iswall);
+                let x = x0; let y = y0;
+                if(board.isWin()) {
+                    do Win();
+                    return true;
+                }
+                if(board.isLose(x, y)) {
+                    do Lose();
+                    return true;
+                }
+                do Sys.wait(5);
+                return false;
+            }
+            do board.setWall(x, y);
+            let x0 = x; let y0 = y;
+            if(board.isWin()) {
+                do Win();
+                    return true;
+            }
+            if(board.isLose(x, y)) {
+                do Lose();
+                return true;
+
+            }
+        }
+        do Sys.wait(5);  // delays the next movement
+        return false;
+    }
+
+    // starts a game
+    method void start() {
+        var char key;
+        var boolean exit;
+        let exit = false;
+        
+        while (~exit) {
+            while (key = 0) {
+                let key = Keyboard.keyPressed();
+            }
+            if (key = 81)  { let exit = true; }     // q key
+            if (key = 131) { let direction = 1; }   // up arrow
+            if (key = 133) { let direction = 2; }   // down arrow
+            if (key = 130) { let direction = 3; }   // left arrow
+            if (key = 132) { let direction = 4; }   // right arrow
+            if (key = 88)  { let direction = 5; }   // x key
+            
+            if(~exit) {
+                let exit = moveKnight();
+            }
+
+            while (~(key = 0)) {
+                let key = Keyboard.keyPressed();
+            }
+        }
+        return;
+    }
+
+    // dispalys Win text, very lucky you're if you got it. ^-^
+    method void Win() {
+        do Output.println();
+        do Output.println();
+        do Output.printString("Awesome, You Win. ^-^");
+        do Output.println();
+        do Output.printString(" - R to restart the game.");
+        do Output.println();
+        return;
+    }
+
+    // dispalys Lose text.
+    method void Lose() {
+        do Output.println();
+        do Output.println();
+        do Output.printString("Nice try, You Lose. *_*");
+        do Output.println();
+        do Output.printString(" - R to restart the game.");
+        do Output.println();
+        return;
+    }
+
+    method void dispose() {
+        do board.dispose();
+        do knight.dispose();
+        do Memory.deAlloc(this);
+        return;
+   }
+}

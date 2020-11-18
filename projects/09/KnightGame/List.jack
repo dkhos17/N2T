@@ -1,0 +1,75 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/List/List.jack
+
+/** Represents a linked list of integers. */
+class List {
+    field int data;          // a list consists of a data field,
+    field List next;         // followed by a list
+
+    /* Creates a List. */
+    constructor List new(int car, List cdr) {
+        let data = car;       // the identifiers car and cdr are used in 
+        let next = cdr;       // memory of the Lisp programming language
+        return this;
+    }
+
+    /** Accessors. */
+    method int getData() { return data; }
+    method int getNext() { return next; }
+    method void setData(int val) { let data = val; return; }
+
+    // get helper
+    method int get_helper(int idx, List list) {
+        if(idx = 0) {
+            return list.getData();
+        }
+        return get_helper(idx-1, list.getNext());
+    }
+
+    // finds adn return idx-th value.
+    method int get(int idx) {
+        return get_helper(idx, this);
+    }
+    
+    // set helper
+    method void set_helper(int idx, int val, List list) {
+        if(idx = 0) {
+            do list.setData(val);
+            return;
+        }
+        do set_helper(idx-1, val, list.getNext());
+        return;
+    }
+
+    // finds idx-th date and set a value to val.
+    method int set(int idx, int val) {
+        return set_helper(idx, val, this);
+    }
+
+    /** Prints this list. */
+    method void print() {
+        var List current;    // initializes current to the first item
+        let current = this;  // of this list
+        while (~(current = null)) {
+            do Output.printInt(current.getData());
+            do Output.printChar(32); // prints a space
+            let current = current.getNext();
+        }
+        return;
+    }
+
+    /** Disposes this List by recursively disposing its tail. */
+    method void dispose() {
+        if (~(next = null)) {
+            do next.dispose();
+        }
+        // Uses an OS routine to recycle this object.
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    // More list processing methods can come here.
+
+}

@@ -1,0 +1,80 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+    static Array RAM, freeList;
+    static int SIZE, NEXT;
+
+    /** Initializes the class. */
+    function void init() {
+        let RAM = 0;
+        let freeList = 2048;
+        let freeList[0] = 16384-2049;
+        let freeList[1] = null;
+
+        let SIZE = 0; let NEXT = 1;
+        return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+        return RAM[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+        let RAM[address] = value;
+        return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+        var Array curr, prev, block;
+        let block = freeList;
+        let curr = freeList;
+        let prev = null;
+        /* find best fit */
+        while(~(curr = null)) {
+            if(curr[SIZE] > size) {
+                if(curr[SIZE] < block[SIZE]) {
+                    let block = curr;
+                }
+            }
+            let prev = curr;
+            let curr = curr[NEXT];
+        }
+        /* need to delete node */
+        if(block[SIZE] = (size+1)) {
+            if(~(prev = null)) {
+                let prev[NEXT] = block[NEXT];
+            }
+        } else {
+            let block[SIZE] = block[SIZE] - size - 1;
+            let block = block + block[SIZE] + 1;
+            let block[SIZE] = size;
+        }
+        return block+1;
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+        var Array curr;
+        let curr = freeList;
+        while(~(curr[NEXT] = null)) {
+            let curr = curr[NEXT];
+        }
+        let o[SIZE] = o[-1];
+        let o[NEXT] = null;
+        let curr[NEXT] = o;
+        return;
+    }    
+}

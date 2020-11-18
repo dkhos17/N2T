@@ -1,0 +1,176 @@
+/* A class of Board, by default inits a Chess Board */ 
+class Board {
+    field List walls;
+    field int ox, oy, width, height;
+    
+    // creates a chess board, starting from OXY and knows that a Knight will start from (x0,y0);
+    constructor Board new(int oX, int oY, int x0, int y0) {
+        let ox = oX;
+        let oy = oY;
+        let width = 32;
+        let height = 32;
+        do draw();
+        do drawBorders();
+        do setWall(x0, y0);
+        return this;
+    }
+    
+    // draws a board
+    method void draw() {
+        var int x, y;
+        var bool color;
+        let x = 0;
+        let y = 0;
+        let color = true;
+        while((x < (8*width)) & (y < (8*height))) {
+            let walls = List.new(0, walls);
+            let color = flipColor(color);
+            do Screen.drawRectangle(ox+x, oy+y, Math.min(ox+x+width, 511), Math.min(oy+y+height,255));
+
+            let y = y+height;
+            if(y = (8*height)) {
+                let x = x+width;
+                let y = 0;
+                let color = flipColor(color);
+            }
+        }
+        return;
+    }
+
+    // checks if it is a won state. all cells are walls.
+    method bool isWin() {
+        var int x, y, val;
+        let x = 0;
+        let y = 0;
+        while((x < 8) & (y < 8)) {
+            let val = walls.get((8*x)+y);
+            if(val = 0) {
+                return false;
+            }
+            let y = y+1;
+            if(y = 8) {
+                let x = x + 1;
+                let y = 0;
+            }
+        }
+        return true;
+    }
+
+    //check if it is a lose state. all avaiable move hits a wall.
+    method bool isLose(int x, int y) {
+        var int val;
+        if((x+2 < 8) & (y+1 < 8)) {
+            let val = walls.get((8*(x+2))+y+1);
+            if(val = 0) {return false;}
+        }
+        if((x+2 < 8) & (y > 0)) {
+            let val = walls.get((8*(x+2))+y-1);
+            if(val = 0) {return false;}
+        }
+        if((x-2 > 0) & (y+1 < 8)) {
+            let val = walls.get((8*(x-2))+y+1);
+            if(val = 0) {return false;}
+        }
+        if((x-2 > 0) & (y > 0)) {
+            let val = walls.get((8*(x-2))+y-1);
+            if(val = 0) {return false;}
+        }
+        if((y+2 < 8) & (x+1 < 8)) {
+            let val = walls.get((8*(x+1))+y+2);
+            if(val = 0) {return false;}
+        }
+        if((y+2 < 8) & (x > 0)) {
+            let val = walls.get((8*(x-1))+y+2);
+            if(val = 0) {return false;}
+        }
+        if((y-2 > 0) & (x+1 < 8)) {
+            let val = walls.get((8*(x+1))+y-2);
+            if(val = 0) {return false;}
+        }
+        if((y-2 > 0) & (x > 0)) {
+            let val = walls.get((8*(x-1))+y-2);
+            if(val = 0) {return false;}
+        }
+        return true;
+    }
+
+    // changes a color, from white to black, and rev.
+    method bool flipColor(bool color) {
+        do Screen.setColor(color);
+        if(color = true) { return false; }
+        return true;
+    }
+
+    // draws borders for board.
+    method void drawBorders() {
+        do Screen.setColor(true);
+        // my case
+        do Screen.drawRectangle(ox-1, oy, ox+1, 255);
+
+        // general
+        // do Screen.drawRectangle(ox-1, oy-1, ox-1, oy+1+(8*height));
+        // do Screen.drawRectangle(ox-1, oy-1, ox+1+(8*width), oy-1);
+        // do Screen.drawRectangle(ox-1, oy+1+(8*height), ox+1+(8*width), oy+1+(8*height));
+        // do Screen.drawRectangle(ox+1+(8*width), oy-1, ox+1+(8*width), oy+1+(8*height));
+        return;
+    }   
+
+    // set a wall on (x,y);
+    method void setWall(int x, int y) {
+        var int idx;
+        let idx = (8*x)+y;
+        do walls.set(idx, 1);
+        do makeWall(x, y);
+        return;
+    }
+
+    // cheks if (x,y) is a wall.
+    method bool isWall(int x, int y) {
+        var int val, idx;
+        let idx = (8*x)+y;
+        let val = walls.get(idx);
+        if(val = 0) {
+            return false;
+        }
+        do makeWall(x, y);   
+        return true;
+    }
+
+    // draws a wall on (x,y) 32x32 - need to call 4 times drawWall;
+    method void makeWall(int x, int y) {
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))));
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 1);
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 512);
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 513);
+        return;
+    }
+
+    //draws a wall on location 16x16
+    method void drawWall(int location) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress+0, -1);
+        do Memory.poke(memAddress+32, -31711);
+        do Memory.poke(memAddress+64, -31711);
+        do Memory.poke(memAddress+96, -1);
+        do Memory.poke(memAddress+128, 4228);
+        do Memory.poke(memAddress+160, 4228);
+        do Memory.poke(memAddress+192, -1);
+        do Memory.poke(memAddress+224, -31711);
+        do Memory.poke(memAddress+256, -31711);
+        do Memory.poke(memAddress+288, -1);
+        do Memory.poke(memAddress+320, 4228);
+        do Memory.poke(memAddress+352, 4228);
+        do Memory.poke(memAddress+384, -1);
+        do Memory.poke(memAddress+416, -31711);
+        do Memory.poke(memAddress+448, -31711);
+        do Memory.poke(memAddress+480, -1);
+	    return;
+    }
+
+    method void dispose() {
+        // do walls.dispose();
+        do Memory.deAlloc(this);
+        return;
+   }
+}

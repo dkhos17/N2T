@@ -1,0 +1,339 @@
+/* Chess Knight piece class */ 
+class Knight {
+    field int x, y, ox, oy, size, width, height;
+
+    // inits ♞ piece, where ox and oy are base point of the board, x0 and y0 - start position of Knight. 
+    constructor Knight new(int oX, int oY, int x0, int y0) {
+        let x = x0; let y = y0;
+        let ox = oX; let oy = oY; 
+        do _init_info_();
+        do insertKnight();
+        return this; 
+    }
+    
+    method void _init_info_() {
+        do Output.moveCursor(0, 0);
+        do drawKnight(0, false);
+        do drawKnight(2, true);
+        do drawKnight(4, false);
+        do drawKnight(6, true);
+        do drawKnight(8, false);
+        do Output.println();
+        do Output.printString("-The Game of Knight-");
+        do Output.println();
+        do Output.println();
+        do Output.println();
+        do Output.printString("Make a Chess Knight move");
+        do Output.println();
+        do Output.printString("and try to fill the board.");
+        do Output.println();
+        do Output.println();
+        do Output.printString("INSTRUCTION: ");
+        do Output.println();
+        do Output.printString(" - Use Arrows to move -");
+        do Output.println();
+        do Output.printString(" - X to mark your move -");
+        do Output.println();
+        do Output.printString(" - Q to quit the game -");
+        do Output.println();
+        return;
+    }
+
+    method void insertKnight() {
+        if((x&1) = (y&1)) {
+            do Screen.setColor(false);
+            do drawKnight((ox/16)+(2*x) + (32*(oy+(32*y))), false);
+        }else {
+            do Screen.setColor(true);
+            do drawKnight((ox/16)+(2*x) + (32*(oy+(32*y))), true);
+        }
+        return;
+    }
+
+    method void eraseKnight(bool iswall) {
+        var int wall;
+        if((x&1) = (y&1)) {
+            do Screen.setColor(true);
+        }else {
+            do Screen.setColor(false);
+        }
+        if(iswall = false) {
+            do Screen.drawRectangle(ox+(32*x), oy+(32*y), Math.min(ox+(32*x)+32, 511), Math.min(oy+(32*y)+32,255));
+        } else {
+            do makeWall(x, y);
+        }
+        return;
+    }
+
+    method bool moveUp(bool iswall) {
+        if (y > 0) {
+            do eraseKnight(iswall);
+            let y = y - 1;
+            do insertKnight();
+            return true;    
+        }
+        return false;
+    }
+
+    method bool moveDown(bool iswall) {
+        if (y < 7) {
+            do eraseKnight(iswall);
+            let y = y + 1;
+            do insertKnight(); 
+            return true;    
+        }
+        return false;
+    }
+
+    method bool moveLeft(bool iswall) {
+        if (x > 0) {
+            do eraseKnight(iswall);
+            let x = x - 1;
+            do insertKnight();
+            return true;    
+        }
+        return false;
+    }
+
+    method bool moveRight(bool iswall) {
+        if (x < 7) {
+            do eraseKnight(iswall);
+            let x = x + 1;
+            do insertKnight();
+            return true;    
+        }
+        return false;
+    }
+
+    method void undoMove(int x0, int y0, bool iswall) {
+        do eraseKnight(iswall);
+        let x = x0;
+        let y = y0;
+        do insertKnight();
+        return;
+    }
+
+    method bool isMove(int x0, int y0, int x, int y) {
+        var int dx, dy;
+        let dx = x-x0;
+        let dy = y-y0;
+        if((dx = 2) | (dx = -2)) {
+            if((dy = 1) | (dy = -1)) {
+                return true;
+            }
+        }
+        if((dy = 2) | (dy = -2)) {
+            if((dx = 1) | (dx = -1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    method void drawKnight(int location, bool color) {
+        do drawKnight_up_left(location, color);
+        do drawKnight_up_right(location+1, color);
+        do drawKnight_down_left(location+512, color);
+        do drawKnight_down_right(location+513, color);
+        return;
+    }
+
+    method void drawKnight_up_left(int location, bool color) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        if(color = true) {
+            do Memory.poke(memAddress+0, -16384);
+            do Memory.poke(memAddress+32, -12288);
+            do Memory.poke(memAddress+64, -3072);
+            do Memory.poke(memAddress+96, -768);
+            do Memory.poke(memAddress+128, -192);
+            do Memory.poke(memAddress+160, -32);
+            do Memory.poke(memAddress+192, -48);
+            do Memory.poke(memAddress+224, -136);
+            do Memory.poke(memAddress+256, -68);
+            do Memory.poke(memAddress+288, -1060);
+            do Memory.poke(memAddress+320, -8742);
+            do Memory.poke(memAddress+352, -25122);
+            do Memory.poke(memAddress+384, -25106);
+            do Memory.poke(memAddress+416, -1043);
+            do Memory.poke(memAddress+448, -2065);
+            do Memory.poke(memAddress+480, 4079);
+        } else {
+            do Memory.poke(memAddress+0, 32767);
+            do Memory.poke(memAddress+32, 12287);
+            do Memory.poke(memAddress+64, 3071);
+            do Memory.poke(memAddress+96, 767);
+            do Memory.poke(memAddress+128, 191);
+            do Memory.poke(memAddress+160, 31);
+            do Memory.poke(memAddress+192, 47);
+            do Memory.poke(memAddress+224, 135);
+            do Memory.poke(memAddress+256, 67);
+            do Memory.poke(memAddress+288, 1059);
+            do Memory.poke(memAddress+320, 549);
+            do Memory.poke(memAddress+352, 545);
+            do Memory.poke(memAddress+384, 529);
+            do Memory.poke(memAddress+416, 1042);
+            do Memory.poke(memAddress+448, 2064);
+            do Memory.poke(memAddress+480, -4080);
+        }
+        return;
+    }
+
+    method void drawKnight_up_right(int location, bool color) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        if(color = true) {
+            do Memory.poke(memAddress+0, 0);
+            do Memory.poke(memAddress+32, 0);
+            do Memory.poke(memAddress+64, 1);
+            do Memory.poke(memAddress+96, 15);
+            do Memory.poke(memAddress+128, 15);
+            do Memory.poke(memAddress+160, 7);
+            do Memory.poke(memAddress+192, 7);
+            do Memory.poke(memAddress+224, 15);
+            do Memory.poke(memAddress+256, 25);
+            do Memory.poke(memAddress+288, 27);
+            do Memory.poke(memAddress+320, 31);
+            do Memory.poke(memAddress+352, 31);
+            do Memory.poke(memAddress+384, 63);
+            do Memory.poke(memAddress+416, 127);
+            do Memory.poke(memAddress+448, 255);
+            do Memory.poke(memAddress+480, 230);
+        } else {
+            do Memory.poke(memAddress+0, -1);
+            do Memory.poke(memAddress+32, -1);
+            do Memory.poke(memAddress+64, -2);
+            do Memory.poke(memAddress+96, -16);
+            do Memory.poke(memAddress+128, -16);
+            do Memory.poke(memAddress+160, -8);
+            do Memory.poke(memAddress+192, -8);
+            do Memory.poke(memAddress+224, -16);
+            do Memory.poke(memAddress+256, -26);
+            do Memory.poke(memAddress+288, -28);
+            do Memory.poke(memAddress+320, -32);
+            do Memory.poke(memAddress+352, -32);
+            do Memory.poke(memAddress+384, -64);
+            do Memory.poke(memAddress+416, -128);
+            do Memory.poke(memAddress+448, -256);
+            do Memory.poke(memAddress+480, -231);
+        }
+        return;
+    }
+
+    method void drawKnight_down_left(int location, bool color) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        if(color = true) {
+            do Memory.poke(memAddress+0, -2);
+            do Memory.poke(memAddress+32, -17);
+            do Memory.poke(memAddress+64, -17);
+            do Memory.poke(memAddress+96, -1059);
+            do Memory.poke(memAddress+128, -2114);
+            do Memory.poke(memAddress+160, -2118);
+            do Memory.poke(memAddress+192, -4228);
+            do Memory.poke(memAddress+224, -24840);
+            do Memory.poke(memAddress+256, 32720);
+            do Memory.poke(memAddress+288, -32);
+            do Memory.poke(memAddress+320, -32);
+            do Memory.poke(memAddress+352, -256);
+            do Memory.poke(memAddress+384, -32);
+            do Memory.poke(memAddress+416, -7280);
+            do Memory.poke(memAddress+448, -8);
+            do Memory.poke(memAddress+480, -4);
+        } else {
+            do Memory.poke(memAddress+0, 1);
+            do Memory.poke(memAddress+32, 16);
+            do Memory.poke(memAddress+64, 16);
+            do Memory.poke(memAddress+96, 1058);
+            do Memory.poke(memAddress+128, 2113);
+            do Memory.poke(memAddress+160, 2117);
+            do Memory.poke(memAddress+192, 4227);
+            do Memory.poke(memAddress+224, 24855);
+            do Memory.poke(memAddress+256, -32753);
+            do Memory.poke(memAddress+288, 31);
+            do Memory.poke(memAddress+320, 31);
+            do Memory.poke(memAddress+352, 255);
+            do Memory.poke(memAddress+384, 31);
+            do Memory.poke(memAddress+416, 14543);
+            do Memory.poke(memAddress+448, 7);
+            do Memory.poke(memAddress+480, 3);
+        }
+        return;
+    }
+
+    method void drawKnight_down_right(int location, bool color) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        if(color = true) {
+            do Memory.poke(memAddress+0, 92);
+            do Memory.poke(memAddress+32, 49);
+            do Memory.poke(memAddress+64, 7);
+            do Memory.poke(memAddress+96, 15);
+            do Memory.poke(memAddress+128, 15);
+            do Memory.poke(memAddress+160, 31);
+            do Memory.poke(memAddress+192, 31);
+            do Memory.poke(memAddress+224, 31);
+            do Memory.poke(memAddress+256, 31);
+            do Memory.poke(memAddress+288, 15);
+            do Memory.poke(memAddress+320, 15);
+            do Memory.poke(memAddress+352, 1);
+            do Memory.poke(memAddress+384, 15);
+            do Memory.poke(memAddress+416, 25);
+            do Memory.poke(memAddress+448, 63);
+            do Memory.poke(memAddress+480, 127);
+        } else {
+            do Memory.poke(memAddress+0, -93);
+            do Memory.poke(memAddress+32, -50);
+            do Memory.poke(memAddress+64, -8);
+            do Memory.poke(memAddress+96, -16);
+            do Memory.poke(memAddress+128, -16);
+            do Memory.poke(memAddress+160, -32);
+            do Memory.poke(memAddress+192, -32);
+            do Memory.poke(memAddress+224, -32);
+            do Memory.poke(memAddress+256, -32);
+            do Memory.poke(memAddress+288, -16);
+            do Memory.poke(memAddress+320, -16);
+            do Memory.poke(memAddress+352, -2);
+            do Memory.poke(memAddress+384, -16);
+            do Memory.poke(memAddress+416, -26);
+            do Memory.poke(memAddress+448, -64);
+            do Memory.poke(memAddress+480, -128);
+        }
+        return;
+    }
+
+     method void makeWall(int x, int y) {
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))));
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 1);
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 512);
+        do drawWall((ox/16)+(2*x) + (32*(oy+(32*y))) + 513);
+        return;
+    }
+
+    method void drawWall(int location) {
+        var int memAddress;
+        let memAddress = 16384+location;
+        do Memory.poke(memAddress+0, -1);
+        do Memory.poke(memAddress+32, -31711);
+        do Memory.poke(memAddress+64, -31711);
+        do Memory.poke(memAddress+96, -1);
+        do Memory.poke(memAddress+128, 4228);
+        do Memory.poke(memAddress+160, 4228);
+        do Memory.poke(memAddress+192, -1);
+        do Memory.poke(memAddress+224, -31711);
+        do Memory.poke(memAddress+256, -31711);
+        do Memory.poke(memAddress+288, -1);
+        do Memory.poke(memAddress+320, 4228);
+        do Memory.poke(memAddress+352, 4228);
+        do Memory.poke(memAddress+384, -1);
+        do Memory.poke(memAddress+416, -31711);
+        do Memory.poke(memAddress+448, -31711);
+        do Memory.poke(memAddress+480, -1);
+	    return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

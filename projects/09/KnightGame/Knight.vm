@@ -1,0 +1,1879 @@
+function Knight.new 0
+push constant 7
+call Memory.alloc 1
+pop pointer 0
+push argument 2
+pop this 0
+push argument 3
+pop this 1
+push argument 0
+pop this 2
+push argument 1
+pop this 3
+push pointer 0
+call Knight._init_info_ 1
+pop temp 0
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push pointer 0
+return
+function Knight._init_info_ 0
+push argument 0
+pop pointer 0
+push constant 0
+push constant 0
+call Output.moveCursor 2
+pop temp 0
+push pointer 0
+push constant 0
+push constant 0
+call Knight.drawKnight 3
+pop temp 0
+push pointer 0
+push constant 2
+push constant 0
+not
+call Knight.drawKnight 3
+pop temp 0
+push pointer 0
+push constant 4
+push constant 0
+call Knight.drawKnight 3
+pop temp 0
+push pointer 0
+push constant 6
+push constant 0
+not
+call Knight.drawKnight 3
+pop temp 0
+push pointer 0
+push constant 8
+push constant 0
+call Knight.drawKnight 3
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 20
+call String.new 1
+push constant 45
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 71
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 75
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+call Output.println 0
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 24
+call String.new 1
+push constant 77
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 75
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 26
+call String.new 1
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 98
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 13
+call String.new 1
+push constant 73
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 23
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 24
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 88
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 23
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 81
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 113
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Knight.insertKnight 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 1
+and
+push this 1
+push constant 1
+and
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push this 0
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push this 1
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+push constant 0
+call Knight.drawKnight 3
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push this 0
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push this 1
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+push constant 0
+not
+call Knight.drawKnight 3
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Knight.eraseKnight 1
+push argument 0
+pop pointer 0
+push this 0
+push constant 1
+and
+push this 1
+push constant 1
+and
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+label IF_END0
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push constant 32
+push this 0
+call Math.multiply 2
+add
+push this 3
+push constant 32
+push this 1
+call Math.multiply 2
+add
+push this 2
+push constant 32
+push this 0
+call Math.multiply 2
+add
+push constant 32
+add
+push constant 511
+call Math.min 2
+push this 3
+push constant 32
+push this 1
+call Math.multiply 2
+add
+push constant 32
+add
+push constant 255
+call Math.min 2
+call Screen.drawRectangle 4
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push pointer 0
+push this 0
+push this 1
+call Knight.makeWall 3
+pop temp 0
+label IF_END1
+push constant 0
+return
+function Knight.moveUp 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call Knight.eraseKnight 2
+pop temp 0
+push this 1
+push constant 1
+sub
+pop this 1
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE0
+push constant 0
+return
+function Knight.moveDown 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 7
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call Knight.eraseKnight 2
+pop temp 0
+push this 1
+push constant 1
+add
+pop this 1
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE0
+push constant 0
+return
+function Knight.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call Knight.eraseKnight 2
+pop temp 0
+push this 0
+push constant 1
+sub
+pop this 0
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE0
+push constant 0
+return
+function Knight.moveRight 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 7
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push argument 1
+call Knight.eraseKnight 2
+pop temp 0
+push this 0
+push constant 1
+add
+pop this 0
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE0
+push constant 0
+return
+function Knight.undoMove 0
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 3
+call Knight.eraseKnight 2
+pop temp 0
+push argument 1
+pop this 0
+push argument 2
+pop this 1
+push pointer 0
+call Knight.insertKnight 1
+pop temp 0
+push constant 0
+return
+function Knight.isMove 2
+push argument 0
+pop pointer 0
+push argument 3
+push argument 1
+sub
+pop local 0
+push argument 4
+push argument 2
+sub
+pop local 1
+push local 0
+push constant 2
+eq
+push local 0
+push constant 2
+neg
+eq
+or
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push constant 1
+eq
+push local 1
+push constant 1
+neg
+eq
+or
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+return
+label IF_FALSE1
+label IF_FALSE0
+push local 1
+push constant 2
+eq
+push local 1
+push constant 2
+neg
+eq
+or
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push constant 1
+eq
+push local 0
+push constant 1
+neg
+eq
+or
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+not
+return
+label IF_FALSE3
+label IF_FALSE2
+push constant 0
+return
+function Knight.drawKnight 0
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 1
+push argument 2
+call Knight.drawKnight_up_left 3
+pop temp 0
+push pointer 0
+push argument 1
+push constant 1
+add
+push argument 2
+call Knight.drawKnight_up_right 3
+pop temp 0
+push pointer 0
+push argument 1
+push constant 512
+add
+push argument 2
+call Knight.drawKnight_down_left 3
+pop temp 0
+push pointer 0
+push argument 1
+push constant 513
+add
+push argument 2
+call Knight.drawKnight_down_right 3
+pop temp 0
+push constant 0
+return
+function Knight.drawKnight_up_left 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+pop local 0
+push argument 2
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 0
+add
+push constant 16384
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 12288
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 3072
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 768
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 192
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 48
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 136
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 68
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 1060
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 8742
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 25122
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 25106
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1043
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 2065
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 4079
+call Memory.poke 2
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push local 0
+push constant 0
+add
+push constant 32767
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 12287
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 3071
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 767
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 191
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 47
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 135
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 67
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 1059
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 549
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 545
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 529
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1042
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 2064
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 4080
+neg
+call Memory.poke 2
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Knight.drawKnight_up_right 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+pop local 0
+push argument 2
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 25
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 27
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 230
+call Memory.poke 2
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push local 0
+push constant 0
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 2
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 8
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 8
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 26
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 28
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 64
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 231
+neg
+call Memory.poke 2
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Knight.drawKnight_down_left 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+pop local 0
+push argument 2
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 0
+add
+push constant 2
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 17
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 17
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1059
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 2114
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 2118
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 4228
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 24840
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 32720
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 256
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 7280
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 8
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 4
+neg
+call Memory.poke 2
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push local 0
+push constant 0
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 16
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 16
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1058
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 2113
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 2117
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 4227
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 24855
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 32753
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 255
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 14543
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 3
+call Memory.poke 2
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Knight.drawKnight_down_right 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+pop local 0
+push argument 2
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 0
+add
+push constant 92
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 49
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 31
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 15
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 25
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 127
+call Memory.poke 2
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push local 0
+push constant 0
+add
+push constant 93
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 50
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 8
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 32
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 2
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 16
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 26
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 64
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 128
+neg
+call Memory.poke 2
+pop temp 0
+label IF_END0
+push constant 0
+return
+function Knight.makeWall 0
+push argument 0
+pop pointer 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push argument 1
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+call Knight.drawWall 2
+pop temp 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push argument 1
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+push constant 1
+add
+call Knight.drawWall 2
+pop temp 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push argument 1
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+push constant 512
+add
+call Knight.drawWall 2
+pop temp 0
+push pointer 0
+push this 2
+push constant 16
+call Math.divide 2
+push constant 2
+push argument 1
+call Math.multiply 2
+add
+push constant 32
+push this 3
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+call Math.multiply 2
+add
+push constant 513
+add
+call Knight.drawWall 2
+pop temp 0
+push constant 0
+return
+function Knight.drawWall 1
+push argument 0
+pop pointer 0
+push constant 16384
+push argument 1
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 4228
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 31711
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Knight.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,25 @@
+/** The Main class of the Knight Game */
+class Main {
+    function void main() {
+        var char key;
+        var int x0, y0;
+        var bool restart;
+        var KnightGame game;
+        let x0 = 0; let y0 = 0;
+        while(~restart) {
+            let game = KnightGame.new(256, 0, x0, y0);
+            do game.start();
+            do game.dispose();
+            let key = 0;
+            while (key = 0) {
+                let key = Keyboard.keyPressed();
+            }
+            let restart = ~(key = 82); // r key
+            let x0 = x0+1;
+            let y0 = y0+1;
+            if(x0 > 7) {let x0 = 0;}
+            if(y0 > 7) {let y0 = 0;}
+        }
+        return;
+    }
+}
