@@ -1,10 +1,8 @@
-# N2T
-
-Nand2Tetris
+# N2T - Nand2Tetris
 ===========
 
 All projects for Nand2Teris
-Nand2Tetris website: http://nand2tetris.org/
+Freeuni course - according to Nand2Tetris: http://nand2tetris.org/
 
 * Project 0: Introduction 
 * Project 1: Boolean Logic
@@ -20,4 +18,3 @@ Nand2Tetris website: http://nand2tetris.org/
 * Project 11: Compiler II: Code Generation   
 * Project 12: Operating System 
 
-@freeuni
