@@ -18,3 +18,5 @@ Freeuni course - according to Nand2Tetris: http://nand2tetris.org/
 * Project 11: Compiler II: Code Generation   
 * Project 12: Operating System 
 
+## + Project - Game of Life
+
